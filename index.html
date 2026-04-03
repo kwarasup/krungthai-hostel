@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>กรุงไทย โฮสเทล สเตชั่น</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: #F5E9C5;
+    --dark: #1A1410;
+    --dark-2: #2A211A;
+    --dark-3: #3D2F24;
+    --cream: #FAF5ED;
+    --cream-2: #F0E8D6;
+    --text-main: #1A1410;
+    --text-muted: #6B5B4A;
+    --text-light: #9C8B78;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Sarabun', sans-serif;
+    background: var(--cream);
+    color: var(--text-main);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(26,20,16,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+  }
+  .nav-logo span { display: block; font-size: 11px; color: var(--gold-light); letter-spacing: 3px; font-weight: 400; font-family: 'Sarabun', sans-serif; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; letter-spacing: 0.5px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--dark);
+    padding: 10px 24px;
+    border-radius: 2px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* HERO */
+  .hero {
+    height: 100vh;
+    background: var(--dark);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.08) 0%, transparent 50%),
+      linear-gradient(180deg, #1A1410 0%, #2A211A 50%, #1A1410 100%);
+  }
+  .hero-pattern {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: repeating-linear-gradient(
+      45deg, var(--gold) 0, var(--gold) 1px,
+      transparent 0, transparent 50%
+    );
+    background-size: 30px 30px;
+  }
+  .hero-content { position: relative; text-align: center; padding: 0 20px; }
+  .hero-tag {
+    display: inline-block;
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold-light);
+    font-size: 11px;
+    letter-spacing: 4px;
+    padding: 8px 20px;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 8vw, 96px);
+    color: #fff;
+    line-height: 1.05;
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .hero-title em { color: var(--gold); font-style: italic; }
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(16px, 2.5vw, 22px);
+    color: rgba(255,255,255,0.5);
+    font-style: italic;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+  }
+  .hero-divider {
+    width: 60px; height: 1px;
+    background: var(--gold);
+    margin: 0 auto 40px;
+  }
+  .hero-desc {
+    max-width: 500px;
+    margin: 0 auto 48px;
+    color: rgba(255,255,255,0.6);
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--dark);
+    padding: 16px 40px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold-light);
+    padding: 16px 40px;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+  .btn-outline:hover { background: rgba(201,168,76,0.1); }
+
+  .scroll-hint {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.3); font-size: 11px; letter-spacing: 2px;
+    animation: bounce 2s infinite;
+  }
+  .scroll-hint::after {
+    content: '';
+    width: 1px; height: 48px;
+    background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent);
+  }
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+  /* SECTION COMMON */
+  section { padding: 100px 5%; }
+  .section-tag {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 12px; display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: var(--dark);
+  }
+  .section-desc {
+    font-size: 16px; line-height: 1.9;
+    color: var(--text-muted); max-width: 600px;
+  }
+  .divider {
+    width: 48px; height: 2px; background: var(--gold); margin: 24px 0;
+  }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center; max-width: 1200px; margin: 60px auto 0;
+  }
+  .about-visual {
+    position: relative;
+    background: var(--dark-2);
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-visual-inner {
+    text-align: center; padding: 40px;
+  }
+  .about-visual-icon {
+    font-size: 64px; margin-bottom: 20px; display: block;
+    filter: grayscale(0.3);
+  }
+  .about-visual-text {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .about-visual-sub {
+    color: rgba(255,255,255,0.4);
+    font-size: 13px;
+    margin-top: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .stats-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--cream-2);
+    margin-top: 48px; border: 1px solid var(--cream-2);
+  }
+  .stat-box {
+    background: var(--cream); padding: 24px 20px; text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; color: var(--gold); font-weight: 700;
+    line-height: 1;
+  }
+  .stat-label { font-size: 12px; color: var(--text-light); margin-top: 6px; letter-spacing: 1px; }
+
+  /* AMENITIES */
+  .amenities { background: var(--dark); }
+  .amenities .section-title, .amenities .section-tag { color: var(--gold-light); }
+  .amenities .section-title { color: #fff; }
+  .amenities-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1px; background: rgba(201,168,76,0.15);
+    margin-top: 60px; max-width: 1200px; margin-left: auto; margin-right: auto;
+    margin-top: 60px;
+  }
+  .amenity-card {
+    background: var(--dark-2);
+    padding: 36px 28px;
+    transition: background 0.2s;
+  }
+  .amenity-card:hover { background: var(--dark-3); }
+  .amenity-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+  .amenity-name {
+    font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 8px;
+  }
+  .amenity-desc { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; }
+
+  /* LOCATION */
+  .location { background: var(--cream-2); }
+  .location-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; max-width: 1200px; margin: 60px auto 0;
+    align-items: start;
+  }
+  .map-frame {
+    border-radius: 4px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    position: relative; aspect-ratio: 4/3;
+    background: var(--dark-2);
+  }
+  .map-frame iframe {
+    width: 100%; height: 100%; border: none; display: block;
+  }
+  .map-badge {
+    position: absolute; bottom: 16px; left: 16px;
+    background: var(--dark);
+    color: var(--gold);
+    padding: 8px 16px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-left: 3px solid var(--gold);
+  }
+  .location-info { display: flex; flex-direction: column; gap: 24px; }
+  .info-card {
+    background: var(--cream);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-left: 3px solid var(--gold);
+    padding: 20px 24px;
+    border-radius: 2px;
+  }
+  .info-card-label { font-size: 11px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+  .info-card-value { font-size: 15px; color: var(--text-main); line-height: 1.7; font-weight: 500; }
+  .transport-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+  .transport-item {
+    background: var(--cream);
+    border: 1px solid var(--cream-2);
+    padding: 12px 16px;
+    border-radius: 2px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .transport-icon { font-size: 18px; }
+  .transport-name { font-size: 13px; color: var(--text-main); font-weight: 500; }
+  .transport-time { font-size: 12px; color: var(--text-light); }
+
+  /* NEARBY */
+  .nearby { background: var(--cream); }
+  .nearby-tabs {
+    display: flex; gap: 0; margin: 48px 0 36px;
+    border-bottom: 1px solid var(--cream-2);
+    max-width: 1200px; margin-left: auto; margin-right: auto;
+    margin-top: 48px; margin-bottom: 36px;
+  }
+  .tab-btn {
+    padding: 14px 28px; background: none; border: none; cursor: pointer;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 15px; color: var(--text-light);
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    transition: all 0.2s; font-weight: 500;
+  }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .tab-btn:hover { color: var(--text-main); }
+  .nearby-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px; max-width: 1200px; margin: 0 auto;
+  }
+  .place-card {
+    background: var(--cream);
+    border: 1px solid var(--cream-2);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: none;
+  }
+  .place-card.visible { display: flex; flex-direction: column; }
+  .place-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+  .place-card-header {
+    padding: 20px 20px 0;
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .place-type {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    background: var(--gold-pale); color: #8B6914;
+    padding: 4px 10px; border-radius: 2px;
+  }
+  .place-rating {
+    display: flex; align-items: center; gap: 4px;
+    font-size: 13px; color: var(--gold); font-weight: 600;
+  }
+  .place-rating::before { content: '★'; font-size: 14px; }
+  .place-card-body { padding: 16px 20px 20px; flex: 1; }
+  .place-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; margin-bottom: 8px; color: var(--dark);
+  }
+  .place-address {
+    font-size: 13px; color: var(--text-light); margin-bottom: 10px;
+    display: flex; align-items: flex-start; gap: 6px;
+  }
+  .place-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+  .place-tag {
+    display: inline-block; margin-top: 12px;
+    font-size: 11px; color: var(--text-light);
+    border: 1px solid var(--cream-2);
+    padding: 3px 10px; border-radius: 20px;
+  }
+
+  /* REVIEWS */
+  .reviews { background: var(--dark-2); }
+  .reviews .section-title { color: #fff; }
+  .reviews .section-tag { color: var(--gold-light); }
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px; max-width: 1200px; margin: 60px auto 0;
+  }
+  .review-card {
+    background: var(--dark-3);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 28px;
+    border-radius: 4px;
+    position: relative;
+  }
+  .review-stars {
+    color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 16px;
+  }
+  .review-text {
+    font-size: 15px; color: rgba(255,255,255,0.7);
+    line-height: 1.8; font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
+  .review-author {
+    margin-top: 20px; padding-top: 16px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    font-size: 13px; color: var(--gold-light); letter-spacing: 0.5px;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--gold);
+    padding: 100px 5%;
+    text-align: center;
+  }
+  .cta-section .section-title {
+    color: var(--dark);
+    max-width: 700px; margin: 0 auto 12px;
+  }
+  .cta-section .section-tag { color: rgba(26,20,16,0.6); }
+  .cta-desc { color: rgba(26,20,16,0.7); font-size: 16px; margin: 0 auto 40px; max-width: 500px; }
+  .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .cta-btn-dark {
+    background: var(--dark);
+    color: var(--gold);
+    padding: 18px 48px;
+    font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase;
+    font-weight: 600; text-decoration: none;
+    border-radius: 2px; transition: all 0.2s;
+  }
+  .cta-btn-dark:hover { background: #000; }
+  .cta-btn-ghost {
+    border: 2px solid rgba(26,20,16,0.4);
+    color: var(--dark);
+    padding: 18px 48px;
+    font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase;
+    font-weight: 600; text-decoration: none;
+    border-radius: 2px; transition: all 0.2s;
+  }
+  .cta-btn-ghost:hover { background: rgba(26,20,16,0.1); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 60px 5% 32px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px; max-width: 1200px; margin: 0 auto 48px;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; color: var(--gold); margin-bottom: 16px;
+  }
+  .footer-about { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.8; }
+  .footer-col-title {
+    font-size: 11px; letter-spacing: 3px; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { color: rgba(255,255,255,0.45); font-size: 14px; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); max-width: 1200px; margin: 0 auto 24px; }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: rgba(255,255,255,0.25);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    .about-grid, .location-grid { grid-template-columns: 1fr; gap: 40px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .hero-btns { flex-direction: column; align-items: center; }
+    section { padding: 70px 5%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    กรุงไทย โฮสเทล
+    <span>KRUNG THAI HOSTEL STATION</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">เกี่ยวกับเรา</a></li>
+    <li><a href="#location">ที่ตั้ง</a></li>
+    <li><a href="#nearby">สถานที่ใกล้เคียง</a></li>
+    <li><a href="#reviews">รีวิว</a></li>
+  </ul>
+  <a href="tel:+66968687666" class="nav-cta">จองเลย</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-tag">ย่านตลาดพลู · กรุงเทพมหานคร</div>
+    <h1 class="hero-title">
+      กรุงไทย<br><em>โฮสเทล</em>
+    </h1>
+    <p class="hero-sub">Krung Thai Hostel Station</p>
+    <div class="hero-divider"></div>
+    <p class="hero-desc">
+      ที่พักสไตล์โฮสเทลหัวใจฝั่งธนบุรี<br>
+      ใกล้ BTS · วิวสวย · คาเฟ่อบอุ่นบนชั้น 1<br>
+      และ Rooftop Dining ที่ให้บรรยากาศสุดพิเศษ
+    </p>
+    <div class="hero-btns">
+      <a href="tel:+66968687666" class="btn-primary">จองที่พัก</a>
+      <a href="#about" class="btn-outline">ดูรายละเอียด</a>
+    </div>
+  </div>
+  <div class="scroll-hint">เลื่อนลง</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div>
+      <span class="section-tag">ABOUT US · เกี่ยวกับเรา</span>
+      <h2 class="section-title">ที่พักที่มากกว่าแค่<br>การพักผ่อน</h2>
+      <div class="divider"></div>
+      <p class="section-desc">
+        กรุงไทย โฮสเทล สเตชั่น คือที่พักสไตล์โฮสเทลที่ตั้งอยู่ในย่านตลาดพลู ฝั่งธนบุรี 
+        ด้วยบรรยากาศที่อบอุ่นและเป็นกันเอง คาเฟ่บนชั้น 1 ที่มีเมนู Megalo Latte ขึ้นชื่อ 
+        และ Rooftop Food Zone วิวพาโนรามาที่ทำให้คุณหลงรักทุกครั้งที่มา
+      </p>
+      <p class="section-desc" style="margin-top:16px">
+        ไม่ว่าจะมาพักผ่อน ทำงาน หรือท่องเที่ยวสำรวจกรุงเทพฯ ฝั่งธนบุรี 
+        เราพร้อมดูแลทุกความต้องการของคุณ
+      </p>
+      <div class="stats-row" style="margin-top:40px">
+        <div class="stat-box">
+          <div class="stat-num">5.0</div>
+          <div class="stat-label">คะแนนรีวิว ⭐</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">พร้อมบริการ</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">5 นาที</div>
+          <div class="stat-label">จาก BTS</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="about-visual-inner">
+        <span class="about-visual-icon">🏨</span>
+        <div class="about-visual-text">"The atmosphere is amazing,<br>a million-dollar view."</div>
+        <div class="about-visual-sub">— Guest Review</div>
+        <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <span style="background: rgba(201,168,76,0.15); color: var(--gold); font-size: 12px; padding: 6px 14px; border-radius: 20px;">Rooftop Dining</span>
+          <span style="background: rgba(201,168,76,0.15); color: var(--gold); font-size: 12px; padding: 6px 14px; border-radius: 20px;">Café 1st Floor</span>
+          <span style="background: rgba(201,168,76,0.15); color: var(--gold); font-size: 12px; padding: 6px 14px; border-radius: 20px;">Cozy Vibes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="amenities" id="amenities">
+  <div style="max-width:1200px; margin:0 auto;">
+    <span class="section-tag">AMENITIES · สิ่งอำนวยความสะดวก</span>
+    <h2 class="section-title" style="color:#fff;">ครบครัน ตอบทุกความต้องการ</h2>
+  </div>
+  <div class="amenities-grid">
+    <div class="amenity-card">
+      <span class="amenity-icon">☕</span>
+      <div class="amenity-name">คาเฟ่ชั้น 1</div>
+      <div class="amenity-desc">คาเฟ่บรรยากาศน่ารัก พร้อมเมนูกาแฟคุณภาพ และขนมอบหอมอร่อย เปิดให้บริการทุกวัน</div>
+    </div>
+    <div class="amenity-card">
+      <span class="amenity-icon">🌆</span>
+      <div class="amenity-name">Rooftop Food Zone</div>
+      <div class="amenity-desc">พื้นที่รับประทานอาหารบนดาดฟ้า วิวกรุงเทพฯ ยามค่ำคืน บรรยากาศดีเยี่ยมพร้อมลมเย็น</div>
+    </div>
+    <div class="amenity-card">
+      <span class="amenity-icon">🛏️</span>
+      <div class="amenity-name">ห้องพักสะอาด</div>
+      <div class="amenity-desc">ห้องพักที่สะอาด จัดระเบียบดี สถานที่สะดวก ตอบโจทย์ทั้งนักท่องเที่ยวและนักธุรกิจ</div>
+    </div>
+    <div class="amenity-card">
+      <span class="amenity-icon">🅿️</span>
+      <div class="amenity-name">ที่จอดรถ</div>
+      <div class="amenity-desc">มีที่จอดรถข้างโรงแรม รองรับผู้เข้าพักและผู้มาใช้บริการคาเฟ่</div>
+    </div>
+    <div class="amenity-card">
+      <span class="amenity-icon">💻</span>
+      <div class="amenity-name">Work-Friendly</div>
+      <div class="amenity-desc">พื้นที่ที่เหมาะสำหรับทำงาน มีปลั๊กไฟ WiFi รองรับทุกความต้องการ</div>
+    </div>
+    <div class="amenity-card">
+      <span class="amenity-icon">📍</span>
+      <div class="amenity-name">ทำเลดีเยี่ยม</div>
+      <div class="amenity-desc">ใกล้ BTS กรุงธนบุรี เดินทางสะดวกสู่ทุกจุดหมายในกรุงเทพฯ</div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div style="max-width:1200px; margin:0 auto;">
+    <span class="section-tag">LOCATION · ที่ตั้ง</span>
+    <h2 class="section-title">หาเราเจอได้ที่<br>ตลาดพลู ธนบุรี</h2>
+  </div>
+  <div class="location-grid">
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d484.3!2d100.4787422!3d13.7211881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e299005657798b%3A0xb16155208e8cffe!2z4LiB4Lij4Lih4Lii4LiZ4Li1IOCgtOChreCgp-Cgt-CguiDguKXguJfguKMhje4b!5e0!3m2!1sth!2sth!4v1711234567890"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <div class="map-badge">📍 ตลาดพลู เขตธนบุรี กทม.</div>
+    </div>
+    <div class="location-info">
+      <div class="info-card">
+        <div class="info-card-label">ที่อยู่</div>
+        <div class="info-card-value">
+          1073 ถนนเทอดไท แขวงตลาดพลู<br>
+          เขตธนบุรี กรุงเทพมหานคร 10600
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">ติดต่อ</div>
+        <div class="info-card-value">
+          📞 <a href="tel:+66968687666" style="color:var(--gold);text-decoration:none;">096 868 7666</a>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">การเดินทาง</div>
+        <div class="transport-grid">
+          <div class="transport-item">
+            <span class="transport-icon">🚇</span>
+            <div>
+              <div class="transport-name">BTS กรุงธนบุรี</div>
+              <div class="transport-time">~5 นาที</div>
+            </div>
+          </div>
+          <div class="transport-item">
+            <span class="transport-icon">🚇</span>
+            <div>
+              <div class="transport-name">BTS วุฒากาศ</div>
+              <div class="transport-time">~8 นาที</div>
+            </div>
+          </div>
+          <div class="transport-item">
+            <span class="transport-icon">🚗</span>
+            <div>
+              <div class="transport-name">แท็กซี่ / Grab</div>
+              <div class="transport-time">สะดวก</div>
+            </div>
+          </div>
+          <div class="transport-item">
+            <span class="transport-icon">⛵</span>
+            <div>
+              <div class="transport-name">เรือด่วน</div>
+              <div class="transport-time">ท่าใกล้เคียง</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="https://maps.app.goo.gl/DyvdhH2dxQtkJCvu7" target="_blank" class="btn-primary" style="display:inline-block; text-align:center; margin-top:8px;">
+        นำทางด้วย Google Maps
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEARBY -->
+<section class="nearby" id="nearby">
+  <div style="max-width:1200px; margin:0 auto;">
+    <span class="section-tag">NEARBY · สถานที่แนะนำ</span>
+    <h2 class="section-title">สำรวจย่านธนบุรี<br>ไปกับเรา</h2>
+    <div class="divider"></div>
+    <p class="section-desc">รวมสถานที่เที่ยว ร้านอาหาร และคาเฟ่ที่น่าสนใจในรัศมีใกล้โรงแรม</p>
+  </div>
+
+  <div class="nearby-tabs">
+    <button class="tab-btn active" onclick="filterPlaces('all')">ทั้งหมด</button>
+    <button class="tab-btn" onclick="filterPlaces('attraction')">สถานที่ท่องเที่ยว</button>
+    <button class="tab-btn" onclick="filterPlaces('food')">ร้านอาหาร</button>
+    <button class="tab-btn" onclick="filterPlaces('cafe')">คาเฟ่</button>
+  </div>
+
+  <div class="nearby-grid" id="placesGrid">
+
+    <!-- ATTRACTIONS -->
+    <div class="place-card visible" data-cat="attraction">
+      <div class="place-card-header">
+        <span class="place-type">สถานที่ท่องเที่ยว</span>
+        <span class="place-rating">4.7</span>
+      </div>
+      <div class="place-card-body">
+        <h3 class="place-name">วัดปากน้ำ · พระพุทธรูปยักษ์</h3>
+        <div class="place-address">📍 ถนนเทอดไท เขตธนบุรี</div>
+        <p class="place-desc">จุดถ่ายรูปสุดฮิต พระพุทธรูปสีทองขนาดยักษ์ที่มองเห็นได้แต่ไกล เข้าชมฟรี ช่วงเช้าพระอาทิตย์ขึ้นสวยงามมาก</p>
+        <span class="place-tag">🚶 ~10 นาที จากโรงแรม</span>
+      </div>
+    </div>
+
+    <div class="place-card visible" data-cat="attraction">
+      <div class="place-card-header">
+        <span class="place-type">สถานที่ท่องเที่ยว</span>
+        <span class="place-rating">4.6</span>
+      </div>
+      <div class="place-card-body">
+        <h3 class="place-name">The Artist House Bangkok</h3>
+        <div class="place-address">📍 ถนนเพชรเกษม เขตภาษีเจริญ</div>
+        <p class="place-desc">บ้านไม้เก่าอายุกว่า 200 ปี ริมคลองบางหลวง ทำกิจกรรมงานศิลป์ ดื่มกาแฟ บรรยากาศย้อนยุคที่หาไม่ได้จากที่ไหน</p>
+        <span class="place-tag">🚗 ~15 นาที</span>
+      </div>
+    </div>
+
+    <div class="place-card visible" data-cat="attraction">
+      <div class="place-card-header">
+        <span class="place-type">สถานที่ท่องเที่ยว</span>
+        <span class="place-rating">4.6</span>
+      </div>
+      <div class="place-card-body">
+        <h3 class="place-name">พระบรมมหาราชวัง</h3>
+        <div class="place-address">📍 พระนคร กรุงเทพฯ</div>
+        <p class="place-desc">สถานที่ท่องเที่ยวระดับโลก สถาปัตยกรรมไทยอันงดงาม เปิด 8:30-15:30 น. ค่าเข้าชม 500 บาท (ต่างชาติ)</p>
+        <span class="place-tag">🚇 BTS + ท่าเรือ ~30 นาที</span>
+      </div>
+    </div>
+
+    <!-- FOOD -->
+    <div class="place-card visible" data-cat="food">
+      <div class="place-card-header">
+        <span class="place-type">ร้านอาหาร</span>
+        <span class="place-rating">4.8</span>
+      </div>
+      <div class="place-card-body">
+        <h3 class="place-name">Hidden Bangkok Bistro</h3>
+        <div class="place-address">📍 ซอยเทอดไท 26 เขตธนบุรี</div>
+        <p class="place-desc">ร้านบิสโทรซ่อนตัวริมวัดปากน้ำ วิวพระพุทธรูปยักษ์ที่ดีที่สุด อาหารสด เสิร์ฟเร็ว ราคาเป็นมิตร มี Rooftop Bar ด้วย</p>
+        <span class="place-tag">🚶 ~10 นาที</span>
+      </div>
+    </div>
+
+    <div class="place-card visible" data-cat="food">
+      <div class="place-card-header">
+        <span class="place-type">ร้านอาหาร ซีฟู้ด</span>
+        <span class="place-rating">4.8</span>
+      </div>
+      <div class="place-card-body">
+        <h3 class="place-name">MAHASAMUT Taksin</h3>
+        <div class="place-address">📍 ซอยสมเด็จพระเจ้าตาก เขตธนบุรี</div>
+        <p class="place-desc">ร้านอาหารทะเลชื่อดัง เมนูเด็ด ข้าวผัดปูไข่ปู และปลาซอสมะนาว สดชื่น เปิด 10:00-21:00 น. ทุกวัน</p>
+        <span class="place-tag">🚗 ~10 นาที</span>
+      </div>
+    </div>
+
+    <div class="place-card visible" data-cat="food">
+      <div class="place-card-header">
+        <span class="place-type">ร้านอาหาร</span>
+        <span class="place-rating">4.8</span>
+      </div>
+      <div class="place-card-body">
+        <h3 class="place-name">Jack Diamond</h3>
+        <div class="place-address">📍 ซอยกรุงธนบุรี 2 เขตคลองสาน</div>
+        <p class="place-desc">Pub &amp; Bistro สไตล์ตะวันตก Happy Hour ดี เมนูหลากหลาย ทั้งสเต็กไทยอีสาน สปาเกตตีซีฟู้ด เปิดถึงเที่ยงคืน</p>
+        <span class="place-tag">🚗 ~12 นาที</span>
+      </div>
+    </div>
+
+    <!-- CAFES -->
+    <div class="place-card visible" data-cat="cafe">
+      <div class="place-card-header">
+        <span class="place-type">คาเฟ่ · Breakfast</span>
+        <span class="place-rating">4.8</span>
+      </div>
+      <div class="place-card-body">
+        <h3 class="place-name">BURR Breakfast & Craft Toast</h3>
+        <div class="place-address">📍 ถนนกรุงธนบุรี ใกล้ BTS กรุงธนบุรี</div>
+        <p class="place-desc">คาเฟ่อาหารเช้าชื่อดัง บรรยากาศสงบ กาแฟดีมาก ขนมปังคราฟท์หน้าต่างๆ เปิด 8:00-17:30 น. (ปิดจันทร์)</p>
+        <span class="place-tag">🚇 ใกล้ BTS ~15 นาที</span>
+      </div>
+    </div>
+
+    <div class="place-card visible" data-cat="cafe">
+      <div class="place-card-header">
+        <span class="place-type">คาเฟ่</span>
+        <span class="place-rating">5.0</span>
+      </div>
+      <div class="place-card-body">
+        <h3 class="place-name">FT Coffee</h3>
+        <div class="place-address">📍 ซอยสมเด็จพระเจ้าตาก เขตธนบุรี</div>
+        <p class="place-desc">คาเฟ่เล็กๆ ซ่อนในซอย เจ้าของน่ารักและพูดภาษาอังกฤษได้ กาแฟอร่อย ราคาย่อมเยา เปิดทุกวัน 7:30-19:30 น.</p>
+        <span class="place-tag">🚗 ~8 นาที</span>
+      </div>
+    </div>
+
+    <div class="place-card visible" data-cat="cafe">
+      <div class="place-card-header">
+        <span class="place-type">คาเฟ่</span>
+        <span class="place-rating">4.7</span>
+      </div>
+      <div class="place-card-body">
+        <h3 class="place-name">Ourlog.bkk</h3>
+        <div class="place-address">📍 ถนนราชพฤกษ์ เขตธนบุรี</div>
+        <p class="place-desc">คาเฟ่ตกแต่งน่ารัก มีแมวในร้าน บรรยากาศ Work-Friendly มี WiFi และปลั๊กไฟ Matcha Coconut เด็ด เปิดทุกวัน</p>
+        <span class="place-tag">🚗 ~10 นาที</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div style="max-width:1200px; margin:0 auto;">
+    <span class="section-tag">REVIEWS · รีวิวจากผู้เข้าพัก</span>
+    <h2 class="section-title">เสียงจากผู้ที่มาสัมผัสด้วยตัวเอง</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"The atmosphere is amazing, a million-dollar view. The scenery is breathtaking, perfect for relaxation. It's stunningly beautiful, like something out of a painting."</p>
+      <div class="review-author">— Guest Review · Google Maps</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"The coffee shop on the 1st floor. กาแฟอร่อย ขนมอบหอม บรรยากาศดี วิว Rooftop สุดยอดมาก ที่พักสะอาด ตั้งอยู่ในทำเลสะดวก จะกลับมาอีกแน่นอน!"</p>
+      <div class="review-author">— ผู้เข้าพัก · Google Maps</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"This cafe has a fantastic mood! It's perfect for reading or working. Some corners even have power outlets, which is great! The basil beef on the rooftop was incredibly delicious."</p>
+      <div class="review-author">— Guest Review · Google Maps</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <span class="section-tag">BOOK NOW · จองที่พักเลย</span>
+  <h2 class="section-title">พร้อมให้คุณมาสัมผัส<br>บรรยากาศแล้ว</h2>
+  <p class="cta-desc">โทรหาเราวันนี้เพื่อจองห้องพักหรือสอบถามข้อมูลเพิ่มเติม ยินดีให้บริการทุกวัน</p>
+  <div class="cta-btns">
+    <a href="tel:+66968687666" class="cta-btn-dark">📞 โทรจองเลย: 096 868 7666</a>
+    <a href="https://maps.app.goo.gl/DyvdhH2dxQtkJCvu7" target="_blank" class="cta-btn-ghost">📍 ดูแผนที่</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">กรุงไทย โฮสเทล สเตชั่น</div>
+      <p class="footer-about">
+        ที่พักสไตล์โฮสเทลในย่านตลาดพลู ธนบุรี กรุงเทพมหานคร<br>
+        พร้อมต้อนรับทุกการเดินทางของคุณ
+      </p>
+    </div>
+    <div>
+      <div class="footer-col-title">ลิงก์ด่วน</div>
+      <ul class="footer-links">
+        <li><a href="#about">เกี่ยวกับเรา</a></li>
+        <li><a href="#amenities">สิ่งอำนวยความสะดวก</a></li>
+        <li><a href="#location">ที่ตั้ง</a></li>
+        <li><a href="#nearby">สถานที่ใกล้เคียง</a></li>
+        <li><a href="#reviews">รีวิว</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">ติดต่อเรา</div>
+      <ul class="footer-links">
+        <li><a href="tel:+66968687666">📞 096 868 7666</a></li>
+        <li><a href="https://maps.app.goo.gl/DyvdhH2dxQtkJCvu7" target="_blank">📍 ดูแผนที่ Google Maps</a></li>
+        <li><span style="color:rgba(255,255,255,0.3)">ตลาดพลู เขตธนบุรี กทม. 10600</span></li>
+      </ul>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    <span>© 2025 กรุงไทย โฮสเทล สเตชั่น · All rights reserved</span>
+    <span>Talat Phlu, Thon Buri, Bangkok</span>
+  </div>
+</footer>
+
+<script>
+function filterPlaces(cat) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.place-card').forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.classList.add('visible');
+    } else {
+      card.classList.remove('visible');
+    }
+  });
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const el = document.querySelector(a.getAttribute('href'));
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
